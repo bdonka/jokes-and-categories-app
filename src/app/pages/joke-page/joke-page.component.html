@@ -1,0 +1,21 @@
+<div>
+  <app-header-routing></app-header-routing>
+</div>
+
+<div>
+  <app-open-add-joke-btn (click)="openDialog()"></app-open-add-joke-btn>
+</div>
+
+<div>
+  <app-joke
+  *ngIf="!!joke && !!category"
+  [categoryName]="category.name"
+  [jokeContent]="joke.content"></app-joke>
+</div>
+
+<div>
+  <app-show-next-joke-btn (click)="onShowNext()"></app-show-next-joke-btn>
+</div>
+
+
+

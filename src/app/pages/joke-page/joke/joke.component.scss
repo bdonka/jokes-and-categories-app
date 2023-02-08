@@ -1,0 +1,45 @@
+:host {
+  display: block;
+  font-family: 'Open Sans';
+
+  section {
+    .column-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-top: 250px;
+      position: relative;
+
+      .joke-box {
+        height: 350px;
+        width: 768px;
+        border-radius: 10px;
+        box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.1);
+        background-color: #FFFFFF;
+        display: flex;
+        flex-direction: column;
+
+        .category {
+          width: 704px;
+          font-size: 14px;
+          font-weight: 400;
+          text-align: end;
+          margin: 34px 32px;
+
+          span {
+            font-weight: 700;
+          }
+        }
+
+        .joke-text {
+          font-size: 16px;
+          font-weight: 400;
+          line-height: 22px;
+          text-align: center;
+          margin: 3px 32px;
+        }
+      }
+    }
+  }
+}

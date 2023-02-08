@@ -1,0 +1,17 @@
+<section>
+  <div class="column-container">
+    <div class="joke-boxes" *ngIf="!!jokes.length">
+      <ng-container *ngFor="let joke of jokes; let index = index">
+      <div class="joke-box">
+          <div class="category">
+            <p>{{ Category }}<span>{{ categoryName }}</span></p>
+          </div>
+          <div class="joke-text" *ngIf="!!joke.content">
+            <p>{{ joke.content }}</p>
+          </div>
+          <app-remove-joke-btn (click)="onRemoveJoke(index)"></app-remove-joke-btn>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</section>

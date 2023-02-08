@@ -1,0 +1,11 @@
+<section>
+  <div class="row-container">
+    <div class="logo">
+      <img src="/assets/icons/logo.png" alt="Logo Jokes">
+    </div>
+    <div class="rows">
+      <a class="joke-page" [routerLink]="[ '/', 'joke-page' ]" routerLinkActive="active">{{ Jokes }}</a>
+      <a class="joke-list-page" [routerLink]="[ '/', 'joke-list-page' ]" routerLinkActive="active">{{ MyJokes }}</a>
+    </div>
+  </div>
+</section>

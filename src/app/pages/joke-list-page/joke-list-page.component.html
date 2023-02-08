@@ -1,0 +1,16 @@
+<div>
+  <app-header-routing></app-header-routing>
+</div>
+<div>
+  <app-open-add-joke-btn (click)="openDialog()"></app-open-add-joke-btn>
+</div>
+
+<div>
+  <app-joke-list
+  *ngIf="!!jokes && !!categories && !!category"
+  [categories]="categories"
+  [jokes]="jokes"
+  [categoryName]="category.name"
+  [jokeCategory]="joke?.category"
+  ></app-joke-list>
+</div>

@@ -1,0 +1,54 @@
+:host {
+  display: block;
+  font-family: 'Open Sans';
+
+  section {
+    .column-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      top: 150px;
+
+      .joke-boxes {
+        width: 768px;
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        flex-wrap: wrap;
+        padding-top: 75px;
+
+        .joke-box {
+          min-width: 377px;
+          max-width: 377px;
+          min-height: 320px;
+          border-radius: 10px;
+          flex: 1;
+          box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.1);
+          position: relative;
+
+
+          .category {
+            font-size: 14px;
+            font-weight: 400;
+            text-align: end;
+            margin: 0 32px;
+
+            span {
+              font-weight: 700;
+            }
+          }
+
+          .joke-text {
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 22px;
+            text-align: start;
+            margin: 3px 32px;
+          }
+        }
+      }
+    }
+  }
+}

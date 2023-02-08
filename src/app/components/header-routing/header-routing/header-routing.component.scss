@@ -1,0 +1,49 @@
+:host {
+  display: block;
+  font-family: 'Open Sans';
+
+  section {
+    .row-container {
+      height: 80px;
+      width: 100%;
+      position: relative;
+      z-index: 5;
+      border-bottom: 3px solid #F5F5F5;
+
+      .logo {
+        position: absolute;
+        top: 28px;
+        left: 16px;
+      }
+
+      .rows {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        text-align: center;
+        gap: 16px;
+        padding: 29px 3px;
+
+        .joke-page {
+          text-decoration: none;
+          font-size: 16px;
+          font-weight: 700;
+          line-height: 22px;
+          color: #000000;
+        }
+
+        .joke-list-page {
+          text-decoration: none;
+          font-size: 16px;
+          font-weight: 700;
+          line-height: 22px;
+          color: #000000;
+        }
+
+        .active {
+          color: #FFCC15;
+        }
+      }
+    }
+  }
+}

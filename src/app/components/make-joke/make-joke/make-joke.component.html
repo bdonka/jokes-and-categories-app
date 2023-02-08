@@ -1,0 +1,29 @@
+<h1 mat-dialog-title>{{ AddJoke }}</h1>
+<div mat-dialog-content>
+  <div class="choose-category">
+    <ng-container>
+      <mat-form-field >
+        <mat-label>{{ ChooseCategory }}</mat-label>
+        <mat-select [(ngModel)]="selectedValue" name="category">
+          <mat-option *ngFor="let category of data.categories" [value]="category.id">{{category.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </ng-container>
+  </div>
+
+  <p> Selected category: {{selectedValue}} </p>
+
+  <mat-form-field appearance="fill">
+    <mat-label>{{ ContentNewJoke }}</mat-label>
+    <textarea matInput [(ngModel)]="newJokeContent"></textarea>
+  </mat-form-field>
+</div>
+
+<p> Joke content: {{newJokeContent}} </p>
+
+<div mat-dialog-actions>
+  <button mat-flat-button mat-dialog-close>{{ Cancel }}</button>
+  <button mat-raised-button mat-dialog-close color="warn">{{ Add }}</button>
+</div>
+
+
