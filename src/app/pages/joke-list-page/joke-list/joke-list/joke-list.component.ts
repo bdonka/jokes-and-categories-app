@@ -1,6 +1,4 @@
-import categoriesData from 'src/assets/categories.json';
-import jokesData from 'src/assets/jokes.json';
-import { MakeJokeComponent } from 'src/app/components/make-joke/make-joke/make-joke.component';
+import { ConfirmationRemoveJokeComponent } from './../../confirmation-remove-joke/confirmation-remove-joke.component';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { State } from 'src/app/state.enum';
@@ -17,21 +15,37 @@ export class JokeListComponent implements OnInit{
   @Input() jokes: Joke[] = [];
   @Input() categories: Category[] = [];
   @Input() categoryName: string = '';
+  @Input() joke: Joke | undefined;
+  @Input() category?: Category | undefined;
 
 
   public StateEnum = State;
   public Category = State.Category;
   public Cancel = State.Cancel;
 
-  constructor(public dialog : MatDialog) {
+  constructor(public dialog : MatDialog){}
+
+  ngOnInit() {
   }
 
-  ngOnInit() {}
-
-  onRemoveJoke(index: number) {
-    if (index !== -1) {
-      this.jokes.splice(index, 1);
+  getJokeCategory(joke?: Joke): string {
+    if (!joke) {
+      return '';
     }
-    console.log('dupa')
+    let categoryName;
+    this.categories?.forEach((category: Category) => {
+      if (category.id === joke.category) {
+        categoryName = category.name;
+      }
+    });
+    return this.categoryName;
+  }
+
+  openConfirmation() {
+  this.dialog.open(ConfirmationRemoveJokeComponent, {
+    height: '473px',
+    width: '600px',
+    data: {categories : this.categories}
+    });
   }
 }

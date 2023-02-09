@@ -7,10 +7,8 @@
 
 <div>
   <app-joke-list
-  *ngIf="!!jokes && !!categories && !!category"
+  *ngIf="!!jokes && !!categories"
   [categories]="categories"
   [jokes]="jokes"
-  [categoryName]="category.name"
-  [jokeCategory]="joke?.category"
   ></app-joke-list>
 </div>

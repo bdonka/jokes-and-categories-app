@@ -20,6 +20,7 @@ export class RemoveJokeBtnComponent {
   @Input() joke: Joke | undefined;
 
   @Output() remove = new EventEmitter();
+  @Output() open = new EventEmitter();
 
   public StateEnum = State;
   public Delete = State.Delete;
@@ -29,6 +30,9 @@ export class RemoveJokeBtnComponent {
 
   ngOnInit() {}
 
+  OpenDialog() {
+    this.open.emit();
+  }
   onRemoveJoke() {
     this.remove.emit()
   }

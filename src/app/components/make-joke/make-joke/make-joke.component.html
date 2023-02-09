@@ -4,14 +4,14 @@
     <ng-container>
       <mat-form-field >
         <mat-label>{{ ChooseCategory }}</mat-label>
-        <mat-select [(ngModel)]="selectedValue" name="category">
+        <mat-select [(ngModel)]="categoryId" name="category">
           <mat-option *ngFor="let category of data.categories" [value]="category.id">{{category.name}}</mat-option>
         </mat-select>
       </mat-form-field>
     </ng-container>
   </div>
 
-  <p> Selected category: {{selectedValue}} </p>
+  <p> Selected category: {{categoryId}} </p>
 
   <mat-form-field appearance="fill">
     <mat-label>{{ ContentNewJoke }}</mat-label>

@@ -4,14 +4,15 @@
       <ng-container *ngFor="let joke of jokes; let index = index">
       <div class="joke-box">
           <div class="category">
-            <p>{{ Category }}<span>{{ categoryName }}</span></p>
+            <p>{{ Category }}<span>{{getJokeCategory(joke)}}</span></p>
           </div>
           <div class="joke-text" *ngIf="!!joke.content">
             <p>{{ joke.content }}</p>
           </div>
-          <app-remove-joke-btn (click)="onRemoveJoke(index)"></app-remove-joke-btn>
+          <app-remove-joke-btn (click)="openConfirmation()"></app-remove-joke-btn>
         </div>
       </ng-container>
     </div>
   </div>
 </section>
+
