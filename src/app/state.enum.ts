@@ -13,6 +13,7 @@ export enum State {
   No = 'Nie',
   ShowNext = 'Pokaż następny',
   Success = 'Sukces',
+  Removed = 'Żart został pomyślnie usunięty.',
   Question = 'Czy napewno chcesz usunąć wybrany żart?',
   Yes = 'Tak'
 }

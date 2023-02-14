@@ -1,3 +1,4 @@
+
 import { MakeJokeComponent } from 'src/app/components/make-joke/make-joke/make-joke.component';
 import { JokeListPageComponent } from './pages/joke-list-page/joke-list-page.component';
 import { JokePageComponent } from './pages/joke-page/joke-page.component';
@@ -11,6 +12,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
+import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from 'src/app/app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -25,6 +27,9 @@ import { DialogModule } from '@angular/cdk/dialog';
 import { MatNativeDateModule } from '@angular/material/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OpenDialogService } from './service/open-dialog.service';
+import { SuccessAddJokeAlertComponent } from './components/success-add-joke-alert/success-add-joke-alert.component';
+import { SuccessRemoveJokeAlertComponent } from './pages/joke-list-page/confirmation-remove-joke/success-remove-joke-alert/success-remove-joke-alert.component';
+
 
 @NgModule({
   declarations: [
@@ -38,7 +43,9 @@ import { OpenDialogService } from './service/open-dialog.service';
     JokeListPageComponent,
     ConfirmationRemoveJokeComponent,
     RemoveJokeBtnComponent,
-    MakeJokeComponent
+    MakeJokeComponent,
+    SuccessAddJokeAlertComponent,
+    SuccessRemoveJokeAlertComponent
   ],
   imports: [
     AppRoutingModule,
@@ -53,7 +60,8 @@ import { OpenDialogService } from './service/open-dialog.service';
     MatFormFieldModule,
     MatNativeDateModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [ OpenDialogService,
     { provide: MAT_DIALOG_DATA, useValue: {} },

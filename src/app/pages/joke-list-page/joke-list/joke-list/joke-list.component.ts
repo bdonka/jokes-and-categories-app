@@ -1,5 +1,5 @@
 import { ConfirmationRemoveJokeComponent } from './../../confirmation-remove-joke/confirmation-remove-joke.component';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { State } from 'src/app/state.enum';
 import { Category } from 'src/app/interface/category';
@@ -14,10 +14,6 @@ export class JokeListComponent implements OnInit{
 
   @Input() jokes: Joke[] = [];
   @Input() categories: Category[] = [];
-  @Input() categoryName: string = '';
-  @Input() joke: Joke | undefined;
-  @Input() category?: Category | undefined;
-
 
   public StateEnum = State;
   public Category = State.Category;
@@ -32,13 +28,13 @@ export class JokeListComponent implements OnInit{
     if (!joke) {
       return '';
     }
-    let categoryName;
+    let categoryName: string = '';
     this.categories?.forEach((category: Category) => {
       if (category.id === joke.category) {
         categoryName = category.name;
       }
     });
-    return this.categoryName;
+    return categoryName;
   }
 
   openConfirmation() {

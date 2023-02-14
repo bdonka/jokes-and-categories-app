@@ -5,7 +5,6 @@ import { Category } from '../interface/category';
 import { Joke } from '../interface/joke';
 import categoriesData from 'src/assets/categories.json';
 import jokesData from 'src/assets/jokes.json';
-import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 
 @Injectable({

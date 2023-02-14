@@ -21,6 +21,8 @@ export class ConfirmationRemoveJokeComponent implements OnInit{
   public Question = State.Question;
   public Yes = State.Yes;
 
+  display = false;
+
   constructor() {}
 
   ngOnInit() {}
@@ -29,7 +31,9 @@ export class ConfirmationRemoveJokeComponent implements OnInit{
     if (index !== -1) {
       this.jokes.splice(index, 1);
     }
-    console.log('dupa')
   }
 
+  onPress() {
+    this.display = true;
+  }
 }
