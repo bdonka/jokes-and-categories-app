@@ -29,6 +29,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OpenDialogService } from './service/open-dialog.service';
 import { SuccessAddJokeAlertComponent } from './components/success-add-joke-alert/success-add-joke-alert.component';
 import { SuccessRemoveJokeAlertComponent } from './pages/joke-list-page/confirmation-remove-joke/success-remove-joke-alert/success-remove-joke-alert.component';
+import { NewDataService } from './service/new-data';
 
 
 @NgModule({
@@ -63,7 +64,7 @@ import { SuccessRemoveJokeAlertComponent } from './pages/joke-list-page/confirma
     FormsModule,
     HttpClientModule
   ],
-  providers: [ OpenDialogService,
+  providers: [ NewDataService, OpenDialogService,
     { provide: MAT_DIALOG_DATA, useValue: {} },
     { provide: MatDialogRef, useValue: {} }
   ],

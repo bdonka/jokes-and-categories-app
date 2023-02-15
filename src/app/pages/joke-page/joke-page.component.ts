@@ -1,4 +1,3 @@
-import { AddNewJokeService } from './../../service/add-new-joke.service';
 import categoriesData from 'src/assets/categories.json';
 import jokesData from 'src/assets/jokes.json';
 import { Component, OnInit } from '@angular/core';
@@ -21,8 +20,7 @@ export class JokePageComponent implements OnInit{
   public startIndex: number = 0;
   public nextIndex?: number;
 
-  constructor(private openDialogService:  OpenDialogService,
-    private addNewJokeService: AddNewJokeService){
+  constructor(private openDialogService:  OpenDialogService){
   }
 
   ngOnChanges() {
@@ -85,9 +83,4 @@ export class JokePageComponent implements OnInit{
     this.openDialogService.openDialog().subscribe(data =>
       console.log(data));
   }
-
-  // addNewJoke() {
-  //   this.addNewJokeService.addNewJoke().subscribe(content => {
-  //   jokesData.push(content);
-  // }
 }

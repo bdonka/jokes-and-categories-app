@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { Category } from 'src/app/interface/category';
 import { Joke } from 'src/app/interface/joke';
 import { OpenDialogService } from 'src/app/service/open-dialog.service';
+import { NewDataService } from 'src/app/service/new-data';
 
 @Component({
   selector: 'app-joke-list-page',
@@ -17,7 +18,10 @@ export class JokeListPageComponent implements OnInit {
   category: Category | undefined;
   joke: Joke | undefined;
 
-  constructor(private openDialogService:  OpenDialogService){
+  newJoke: any[] = [];
+
+  constructor(private openDialogService:  OpenDialogService,
+    private newDataService: NewDataService){
   }
 
   ngOnInit() {
@@ -27,4 +31,10 @@ export class JokeListPageComponent implements OnInit {
     this.openDialogService.openDialog().subscribe(data =>
       console.log(data));
   }
+
+  subscribeNewJoke() {
+    this.newDataService.subscribeNewJoke().subscribe((newJokeContent) => {
+      this.newJoke.push(newJokeContent)
+    });
+   }
 }

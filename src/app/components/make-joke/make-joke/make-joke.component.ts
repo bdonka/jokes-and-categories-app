@@ -1,3 +1,4 @@
+import { NewDataService } from './../../../service/new-data';
 import categoriesData from 'src/assets/categories.json';
 import jokesData from 'src/assets/jokes.json';
 import { Component, Inject, Input } from '@angular/core';
@@ -20,6 +21,7 @@ export class MakeJokeComponent {
 
   categoryId: string = '';
   newJokeContent: string = '';
+  newJoke: any[] = [];
 
   public StateEnum = State;
   public Add = State.Add;
@@ -28,7 +30,11 @@ export class MakeJokeComponent {
   public ChooseCategory = State.ChooseCategory;
   public ContentNewJoke = State.ContentNewJoke;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: {categories: any}){}
+  constructor(private newDataService: NewDataService, @Inject(MAT_DIALOG_DATA) public data: {categories: any}){}
+
+  ngOnInit() {
+    this.newJoke = this.newDataService.newJoke;
+  }
 
   getJokeCategory(newJokeContent?: Joke): Category | undefined {
     if (!newJokeContent) {
@@ -43,4 +49,10 @@ export class MakeJokeComponent {
     return jokeCategory;
   }
 
+  addNewJoke() {
+    this.newDataService.updateJokes({content: this.newJokeContent, category: this.categoryId});
+    this.newJoke.push({content: this.newJokeContent, category: this.categoryId});
+    this.newJokeContent = '';
+    // console.log(this.jokes, 'dupa')
+  }
 }
