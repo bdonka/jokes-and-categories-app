@@ -1,9 +1,11 @@
 import categoriesData from 'src/assets/categories.json';
 import jokesData from 'src/assets/jokes.json';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Inject, Input, OnInit } from '@angular/core';
 import { State } from 'src/app/state.enum';
 import { Joke } from 'src/app/interface/joke';
 import { Category } from 'src/app/interface/category';
+import { DIALOG_DATA } from '@angular/cdk/dialog';
+import { NewDataService } from 'src/app/service/new-data';
 
 @Component({
   selector: 'app-confirmation-remove-joke',
@@ -11,10 +13,6 @@ import { Category } from 'src/app/interface/category';
   styleUrls: ['./confirmation-remove-joke.component.scss']
 })
 export class ConfirmationRemoveJokeComponent implements OnInit{
-
-  @Input() categories: Category[] = categoriesData;
-  @Input() jokes: Joke[] = jokesData;
-
   public StateEnum = State;
   public Confirmation = State.Confirmation;
   public No = State.No;
@@ -23,14 +21,16 @@ export class ConfirmationRemoveJokeComponent implements OnInit{
 
   display = false;
 
-  constructor() {}
+  joke: Joke;
+
+  constructor(@Inject(DIALOG_DATA) public data: any, private newDataService: NewDataService) {
+    this.joke = data.joke
+  }
 
   ngOnInit() {}
 
-  onRemoveJoke(index: number) {
-    if (index !== -1) {
-      this.jokes.splice(index, 1);
-    }
+  onRemoveJoke() {
+    this.newDataService.removeJoke(this.joke.id)
   }
 
   onPress() {

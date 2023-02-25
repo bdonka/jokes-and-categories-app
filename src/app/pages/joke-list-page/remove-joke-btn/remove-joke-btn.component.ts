@@ -1,6 +1,4 @@
-import { MakeJokeComponent } from 'src/app/components/make-joke/make-joke/make-joke.component';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
 import { State } from 'src/app/state.enum';
 import { Category } from 'src/app/interface/category';
 import categoriesData from 'src/assets/categories.json';
@@ -33,6 +31,7 @@ export class RemoveJokeBtnComponent {
   OpenDialog() {
     this.open.emit();
   }
+
   onRemoveJoke() {
     this.remove.emit()
   }

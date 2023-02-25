@@ -18,6 +18,8 @@ export class JokeListPageComponent implements OnInit {
   category: Category | undefined;
   joke: Joke | undefined;
 
+  jokesNewStatePage: Joke[] = []
+
   newJoke: any[] = [];
 
   constructor(private openDialogService:  OpenDialogService,
@@ -25,16 +27,13 @@ export class JokeListPageComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.newDataService.jokesNewState.subscribe((data) => {
+      this.jokesNewStatePage = data
+    })
   }
 
   openDialog() {
     this.openDialogService.openDialog().subscribe(data =>
       console.log(data));
   }
-
-  subscribeNewJoke() {
-    this.newDataService.subscribeNewJoke().subscribe((newJokeContent) => {
-      this.newJoke.push(newJokeContent)
-    });
-   }
 }

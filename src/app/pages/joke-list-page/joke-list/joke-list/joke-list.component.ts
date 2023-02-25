@@ -37,11 +37,11 @@ export class JokeListComponent implements OnInit{
     return categoryName;
   }
 
-  openConfirmation() {
+  openConfirmation(joke: Joke) {
   this.dialog.open(ConfirmationRemoveJokeComponent, {
     height: '473px',
     width: '600px',
-    data: {categories : this.categories}
+    data: {joke, categories : this.categories}
     });
   }
 }

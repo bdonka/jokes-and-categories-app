@@ -9,7 +9,7 @@
           <div class="joke-text" *ngIf="!!joke.content">
             <p>{{ joke.content }}</p>
           </div>
-          <app-remove-joke-btn (click)="openConfirmation()"></app-remove-joke-btn>
+          <app-remove-joke-btn (click)="openConfirmation(joke)"></app-remove-joke-btn>
         </div>
       </ng-container>
     </div>

@@ -4,7 +4,7 @@ import { Category } from '../interface/category';
 import { Joke } from '../interface/joke';
 import categoriesData from 'src/assets/categories.json';
 import jokesData from 'src/assets/jokes.json';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +13,10 @@ export class NewDataService {
 
   categories: Category[] = categoriesData;
   jokes: Joke[] = jokesData;
+
+  private _jokesNewState: BehaviorSubject<Joke[]> = new BehaviorSubject((jokesData as Joke[]));
+
+  public readonly jokesNewState: Observable<Joke[]> = this._jokesNewState.asObservable();
 
   categoryId: string = '';
   newJokeContent: string = '';
@@ -25,11 +29,17 @@ export class NewDataService {
 
   constructor(private http: HttpClient) { }
 
+  addJoke(joke: Joke) {
+    this._jokesNewState.next([...this._jokesNewState.value, joke]);
+  }
+
+  removeJoke(id: Joke['id']) {
+    const updatedState = this._jokesNewState.value.filter((joke) => joke.id !== id);
+    this._jokesNewState.next(updatedState);
+  }
+
   updateJokes(newRecord: any) {
     this.newJoke = [...this.jokes, newRecord];
   }
 
-  subscribeNewJoke(): Observable<Joke[]>  {
-    return this.http.get<Joke[]>(this.url);
-  }
 }

@@ -7,6 +7,14 @@ import { Category } from 'src/app/interface/category';
 import { Joke } from 'src/app/interface/joke';
 import { State } from 'src/app/state.enum';
 
+function broofa() {
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+      var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
+      return v.toString(16);
+  });
+}
+
+
 @Component({
   selector: 'app-make-joke',
   templateUrl: './make-joke.component.html',
@@ -50,9 +58,7 @@ export class MakeJokeComponent {
   }
 
   addNewJoke() {
-    this.newDataService.updateJokes({content: this.newJokeContent, category: this.categoryId});
-    this.newJoke.push({content: this.newJokeContent, category: this.categoryId});
+    this.newDataService.addJoke({ content: this.newJokeContent, category: this.categoryId, id: broofa() });
     this.newJokeContent = '';
-    // console.log(this.jokes, 'dupa')
   }
 }

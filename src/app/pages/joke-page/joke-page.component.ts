@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { Category } from 'src/app/interface/category';
 import { Joke } from 'src/app/interface/joke';
 import { OpenDialogService } from 'src/app/service/open-dialog.service';
+import { NewDataService } from 'src/app/service/new-data';
 
 @Component({
   selector: 'app-joke-page',
@@ -20,7 +21,9 @@ export class JokePageComponent implements OnInit{
   public startIndex: number = 0;
   public nextIndex?: number;
 
-  constructor(private openDialogService:  OpenDialogService){
+  jokesNewStatePage: Joke[] = []
+
+  constructor(private openDialogService:  OpenDialogService, private newDataService: NewDataService){
   }
 
   ngOnChanges() {
@@ -28,15 +31,18 @@ export class JokePageComponent implements OnInit{
   }
 
   ngOnInit(){
-    this.getRandomInt(this.jokes.length);
-    this.getJoke(this.jokes.length);
     this.getJokeCategory();
+    this.newDataService.jokesNewState.subscribe((data) => {
+      this.jokesNewStatePage = data
+      this.getRandomInt(data.length);
+      this.getJoke(data.length);
+    })
   }
 
   ngDoCheck() {
-    if(!!this.categories.length && !!this.jokes.length) {
+    if(!!this.categories.length && !!this.jokesNewStatePage.length) {
       if(!this.joke) {
-        this.startIndex = this.getRandomInt(this.jokes.length || 0);
+        this.startIndex = this.getRandomInt(this.jokesNewStatePage.length || 0);
         this.joke = this.getJoke(this.startIndex);
       }
       if(!this.category) {
@@ -50,10 +56,10 @@ export class JokePageComponent implements OnInit{
   }
 
   getJoke(index: number): Joke | undefined {
-    if(!this.jokes) {
+    if(!this.jokesNewStatePage) {
       return undefined;
     }
-    return this.jokes[index];
+    return this.jokesNewStatePage[index];
   }
 
   getJokeCategory(joke?: Joke): Category | undefined {
@@ -71,7 +77,7 @@ export class JokePageComponent implements OnInit{
 
   onShowNext() {
     this.startIndex += 1;
-    if(this.startIndex >= this.jokes?.length) {
+    if(this.startIndex >= this.jokesNewStatePage?.length) {
       this.startIndex = 0;
     }
 
